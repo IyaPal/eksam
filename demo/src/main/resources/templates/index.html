@@ -7,29 +7,27 @@
   <title>Index</title>
 </head>
 <body>
-  <div th:switch="${users}">
-    <h2 th:case="null">Users do not exist</h2>
+  <div th:switch="${functions}">
+    <h2 th:case="null">Functions do not exist</h2>
     <div th:case="*">
       <table>
         <thead>
           <tr>
             <th>Function</th>
-            <th>Task</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          <tr th:each="user : ${users}">
-            <td th:text="${user.name}"></td>
-            <td th:text="${user.task}"></td>
-            <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
-            <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
+          <tr th:each="function : ${functions}">
+            <td th:text="${function.toString()}"></td>
+            <td><a th:href="@{/edit/{id}(id=${function.id})}">Edit</a></td>
+            <td><a th:href="@{/delete/{id}(id=${function.id})}">Delete</a></td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-  <p><a href="/signup">Add a new task</a></p>
+  <p><a href="/newfunction">Add a new function</a></p>
 </body>
 </html>

@@ -4,9 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.ArrayList;
 
 @Entity
-public class User {
+public class Function {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,10 +15,10 @@ public class User {
 
     private int c1, c2, c3, c4, c5;
 
-    public User() {
+    public Function() {
     }
 
-    public User(int c1, int c2, int c3, int c4, int c5) {
+    public Function(int c1, int c2, int c3, int c4, int c5) {
         this.c1 = c1;
         this.c2 = c2;
         this.c3 = c3;
@@ -71,5 +72,19 @@ public class User {
 
     public void setC5(int c5) {
         this.c5 = c5;
+    }
+
+    @Override
+    public String toString() {
+        String s = "";
+        ArrayList<String> polynoms = new ArrayList<>();
+        if (c1 != 0) polynoms.add(c1 + "x^2");
+        if (c2 != 0) polynoms.add(c2 + "y^2");
+        if (c3 != 0) polynoms.add(c3 + "x");
+        if (c4 != 0) polynoms.add(c4 + "y");
+        if (c5 != 0) polynoms.add(c5 + "");
+        s = String.join(" + ", polynoms);
+        return s;
+
     }
 }

@@ -2,8 +2,8 @@ package com.example.demo.controllers;
 
 import javax.validation.Valid;
 
-import com.example.demo.entities.User;
-import com.example.demo.repositories.UserRepository;
+import com.example.demo.entities.Function;
+import com.example.demo.repositories.FunctionRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,62 +14,63 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class UserController {
+public class FunctionController {
   
-  private final UserRepository userRepository;
+  private final FunctionRepository functionRepository;
 
   @Autowired
-  public UserController(UserRepository userRepository){
-    this.userRepository = userRepository;
+  public FunctionController(FunctionRepository functionRepository){
+    this.functionRepository = functionRepository;
   }
 
   @GetMapping("/index")
-  public String showUserList(Model model){
-    model.addAttribute("users", userRepository.findAll());
+  public String showFunctionList(Model model){
+    model.addAttribute("functions", functionRepository.findAll());
     return "index";
   }
 
-  @GetMapping("/signup")
-  public String showSignUp(User user){
-    return "signup";
+  @GetMapping("/newfunction")
+  public String showSignUp(Function function){
+    return "newfunction";
   }
 
-  @PostMapping("/addUser")
-  public String addUser(@Valid User user, BindingResult result, Model model){
+  @PostMapping("/addFunction")
+  public String addUser(@Valid Function function, BindingResult result, Model model){
     if (result.hasErrors()){
-      return "signup";
+      return "newfunction";
     }
 
-    userRepository.save(user);
+    functionRepository.save(function);
+
     return "redirect:/index";
   }
 
   @GetMapping("/edit/{id}")
   public String showUpdate(@PathVariable("id") long id, Model model){
-    User user = userRepository.findById(id)
+    Function function = functionRepository.findById(id)
       .orElseThrow(() -> new IllegalArgumentException("No such user with id " + id));
-    model.addAttribute("user", user);
+    model.addAttribute("function", function);
 
     return "update";
   }
 
   @PostMapping("/update/{id}")
-  public String updateUser(@PathVariable("id") long id, @Valid User user, BindingResult result, Model model){
+  public String updateUser(@PathVariable("id") long id, @Valid Function function, BindingResult result, Model model){
     if (result.hasErrors()){
       return "update";
     }
 
-    userRepository.save(user);
+    functionRepository.save(function);
 
     return "redirect:/index";
   }
 
   @GetMapping("/delete/{id}")
   public String deleteUser(@PathVariable("id") long id, Model model){
-    User user = userRepository.findById(id)
+    Function function = functionRepository.findById(id)
       .orElseThrow(() -> new IllegalArgumentException("No such user with id " + id));
 
-    userRepository.delete(user);
+    functionRepository.delete(function);
 
     return "redirect:/index";
   }

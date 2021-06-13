@@ -4,32 +4,32 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Update</title>
+  <title>Function</title>
 </head>
 <body>
-  <h1>Update</h1>
-  <form action="#" th:action="@{/update/{id}(id=${function.id})}" th:object="${function}" method="post">
-    <label for="c1">c1</label>
+  <h1>New function</h1>
+  <form action="#" th:action="@{/addFunction}" th:object="${function}" method="post">
     <input th:field="*{c1}" type="text" name="c1" id="c1">
+    <label for="c1">x^2</label>
     <span th:if="${#fields.hasErrors('c1')}" th:errors="*{c1}"></span><br/>
 
-    <label for="c2">c2</label>
     <input th:field="*{c2}" type="text" name="c2" id="c2">
+    <label for="c2">y^2</label>
     <span th:if="${#fields.hasErrors('c2')}" th:errors="*{c2}"></span><br/>
 
-    <label for="c3">c3</label>
     <input th:field="*{c3}" type="text" name="c3" id="c3">
+    <label for="c3">x</label>
     <span th:if="${#fields.hasErrors('c3')}" th:errors="*{c3}"></span><br/>
 
-    <label for="c4">c4</label>
     <input th:field="*{c4}" type="text" name="c4" id="c4">
+    <label for="c4">y</label>
     <span th:if="${#fields.hasErrors('c4')}" th:errors="*{c4}"></span><br/>
 
-    <label for="c5">c5</label>
     <input th:field="*{c5}" type="text" name="c5" id="c5">
+    <label for="c5"></label>
     <span th:if="${#fields.hasErrors('c5')}" th:errors="*{c5}"></span><br/>
 
-    <button type="submit">Update function</button>
+    <button type="submit">Add New Function</button>
   </form>
 </body>
 </html>
