@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index</title>
+</head>
+<body>
+  <div th:switch="${users}">
+    <h2 th:case="null">Users do not exist</h2>
+    <div th:case="*">
+      <table>
+        <thead>
+          <tr>
+            <th>Function</th>
+            <th>Task</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="user : ${users}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.task}"></td>
+            <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
+            <td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p><a href="/signup">Add a new task</a></p>
+</body>
+</html>
