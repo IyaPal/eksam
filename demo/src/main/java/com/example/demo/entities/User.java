@@ -4,55 +4,72 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
 
 @Entity
 public class User {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-  @NotBlank(message = "Must enter a name")
-  private String name;
+    private int c1, c2, c3, c4, c5;
 
-  @NotBlank(message = "Must enter a task")
-  private String task;
+    public User() {
+    }
 
-  public User() {
-  }
+    public User(int c1, int c2, int c3, int c4, int c5) {
+        this.c1 = c1;
+        this.c2 = c2;
+        this.c3 = c3;
+        this.c4 = c4;
+        this.c5 = c5;
+    }
 
-  public User(String name, String task) {
-    this.name = name;
-    this.task = task;
-  }
+    public long getId() {
+        return id;
+    }
 
-  public void setId(long id) {
-    this.id = id;
-  }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-  public long getId() {
-    return id;
-  }
+    public int getC1() {
+        return c1;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setC1(int c1) {
+        this.c1 = c1;
+    }
 
-  public void setTask(String task) {
-    this.task = task;
-  }
+    public int getC2() {
+        return c2;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public void setC2(int c2) {
+        this.c2 = c2;
+    }
 
-  public String getTask() {
-    return task;
-  }
+    public int getC3() {
+        return c3;
+    }
 
-  @Override
-  public String toString() {
-    return "User{" + "id=" + id + ", name=" + name + ", task=" + task + '}';
-  }
+    public void setC3(int c3) {
+        this.c3 = c3;
+    }
+
+    public int getC4() {
+        return c4;
+    }
+
+    public void setC4(int c4) {
+        this.c4 = c4;
+    }
+
+    public int getC5() {
+        return c5;
+    }
+
+    public void setC5(int c5) {
+        this.c5 = c5;
+    }
 }

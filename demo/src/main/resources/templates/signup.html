@@ -9,13 +9,12 @@
 <body>
   <h1>SignUp</h1>
   <form action="#" th:action="@{/addUser}" th:object="${user}" method="post">
-    <label for="name">Name</label>
-    <input th:field="*{name}" type="text" name="name" id="name">
-    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br/>
-    <label for="task">Task</label>
-    <input th:field="*{task}" type="text" name="task" id="task">
-    <span th:if="${#fields.hasErrors('task')}" th:errors="*{task}"></span><br/>
-    <button type="submit">Add New Task</button>
+    <label for="c1"></label><input th:field="*{c1}" type="text" name="c1" id="c1">
+    <label for="c2"></label><input th:field="*{c2}" type="text" name="c2" id="c2">
+    <label for="c3"></label><input th:field="*{c3}" type="text" name="c3" id="c3">
+    <label for="c4"></label><input th:field="*{c4}" type="text" name="c4" id="c4">
+    <label for="c5"></label><input th:field="*{c5}" type="text" name="c5" id="c5">
+    <button type="submit">Add New Function</button>
   </form>
 </body>
 </html>
