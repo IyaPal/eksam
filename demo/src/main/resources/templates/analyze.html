@@ -11,9 +11,22 @@
 <p>δ = </p>
 <p>|c1   c2/2|</p>
 <p>|c2/2   c3|</p>
-
-<p>δ = c1 c3 * c2^2/4 = </p>
+<p>=</p>
+<div th:text="|*{function.c1}   *{function.c2}/2|"></div>
+<div th:text="|*{function.c2}/2   *{function.c3}|"></div>
+<div>δ = </div>
 <div th:text="${function.sigma()}"></div>
+
+<p>Δ = </p>
+<p>|c1   c2/2  c4/2|</p>
+<p>|c2/2   c3  c5/2|</p>
+<p>|c4/2   c5/2  c6|</p>
+<p>=</p>
+<div th:text="|*{function.c1}   *{function.c2}/2   *{function.c4}/2|"></div>
+<div th:text="|*{function.c2}/2   *{function.c3}   *{function.c5}/2|"></div>
+<div th:text="|*{function.c4}/2   *{function.c5}/2   *{function.c6}|"></div>
+<div>Δ = </div>
+<div th:text="${function.delta()}"></div>
 
 <br>
 <div th:if="${function.sigma() == 0}">
@@ -25,5 +38,17 @@
 <div th:if="${function.sigma() < 0}">
     <p>δ < 0 same elliptic curve</p>
 </div>
+
+<div>K = </div>
+<div th:text="${function.K()}"></div>
+<div>s = </div>
+<div th:text="${function.s()}"></div>
+<div>x = </div>
+<div th:text="${function.x()}"></div>
+<div>y = </div>
+<div th:text="${function.y()}"></div>
+
+
+
 </body>
 </html>

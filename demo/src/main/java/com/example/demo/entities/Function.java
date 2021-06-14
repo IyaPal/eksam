@@ -1,5 +1,4 @@
 package com.example.demo.entities;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -83,10 +82,30 @@ public class Function {
         this.c6 = c6;
     }
 
-    public int sigma() {
-        return c1 * c3 * (c2 * c2) / 4;
+    public double sigma() {
+        return c1 * c3 - (c2 * c2) / 4.0;
+    }
+    public double delta() {
+        return (c1 * c3 * c6) + (c2 * c5 * c4)/2.0 + (c4 * c5 * c2)/2.0 -
+                ((c4/2.0) * (c4/2.0) * c3) - ((c5/2.0) * (c5/2.0) * c1) - (c6 * (c2/2.0) * (c2/2.0));
     }
 
+    public int s() {
+        return c1 + c3;
+    }
+
+    public double K() {
+        return (c1 * c6 - (c4/2) * (c4/2)) +
+                (c3 * c6 - (c5/2) * (c5/2));
+    }
+
+    public double x() {
+        return ((c2/2) * (c5/2) - (c4/2) * c3) / sigma();
+    }
+
+    public double y() {
+        return ((c4/2) * (c2/2) - (c5/2) * c1) / sigma();
+    }
 
     @Override
     public String toString() {
