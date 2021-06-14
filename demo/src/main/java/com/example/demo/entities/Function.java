@@ -83,6 +83,11 @@ public class Function {
         this.c6 = c6;
     }
 
+    public int sigma() {
+        return c1 * c3 * (c2 * c2) / 4;
+    }
+
+
     @Override
     public String toString() {
         String s = "";
@@ -96,6 +101,5 @@ public class Function {
         s = String.join(" + ", polynoms);
         s += " = 0";
         return s;
-
     }
 }

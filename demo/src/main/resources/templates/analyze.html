@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analyze</title>
+</head>
+<body>
+<h1>Analyze</h1>
+<div th:text="${function.toString()}"></div>
+<p>c1 x^2 + c2/2 xy + c3 y^2 + c4/2 x + c5/2 y + c6 = 0</p>
+<p>δ = </p>
+<p>|c1   c2/2|</p>
+<p>|c2/2   c3|</p>
+
+<p>δ = c1 c3 * c2^2/4 = </p>
+<div th:text="${function.sigma()}"></div>
+
+<br>
+<div th:if="${function.sigma() == 0}">
+  <p>δ = 0 parabolic curve</p>
+</div>
+<div th:if="${function.sigma() > 0}">
+  <p>δ > 0 hyperbolic curve</p>
+</div>
+<div th:if="${function.sigma() < 0}">
+    <p>δ < 0 same elliptic curve</p>
+</div>
+</body>
+</html>

@@ -74,14 +74,18 @@ public class FunctionController {
 
     return "redirect:/index";
   }
+
   @GetMapping("/analyze/{id}")
   public String analyzeFunc(@PathVariable("id") long id, Model model){
     Function function = functionRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("No such func with id " + id));
+            .orElseThrow(() -> new IllegalArgumentException("No such user with id " + id));
+
+    model.addAttribute("function", function);
 
     // TODO analyze
     // functionRepository.delete(function);
 
-    return "redirect:/index";
+    return "analyze";
+
   }
 }
