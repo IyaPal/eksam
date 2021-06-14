@@ -35,7 +35,7 @@ public class FunctionController {
   }
 
   @PostMapping("/addFunction")
-  public String addUser(@Valid Function function, BindingResult result, Model model){
+  public String addFunc(@Valid Function function, BindingResult result, Model model){
     if (result.hasErrors()){
       return "newfunction";
     }
@@ -55,7 +55,7 @@ public class FunctionController {
   }
 
   @PostMapping("/update/{id}")
-  public String updateUser(@PathVariable("id") long id, @Valid Function function, BindingResult result, Model model){
+  public String updateFunc(@PathVariable("id") long id, @Valid Function function, BindingResult result, Model model){
     if (result.hasErrors()){
       return "update";
     }
@@ -66,11 +66,21 @@ public class FunctionController {
   }
 
   @GetMapping("/delete/{id}")
-  public String deleteUser(@PathVariable("id") long id, Model model){
+  public String deleteFunc(@PathVariable("id") long id, Model model){
     Function function = functionRepository.findById(id)
       .orElseThrow(() -> new IllegalArgumentException("No such user with id " + id));
 
     functionRepository.delete(function);
+
+    return "redirect:/index";
+  }
+  @GetMapping("/analyze/{id}")
+  public String analyzeFunc(@PathVariable("id") long id, Model model){
+    Function function = functionRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("No such func with id " + id));
+
+    // TODO analyze
+    // functionRepository.delete(function);
 
     return "redirect:/index";
   }

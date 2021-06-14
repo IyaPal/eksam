@@ -94,6 +94,7 @@ public class Function {
         if (c5 != 0) polynoms.add(c5 + "y");
         if (c6 != 0) polynoms.add(c6 + "");
         s = String.join(" + ", polynoms);
+        s += " = 0";
         return s;
 
     }

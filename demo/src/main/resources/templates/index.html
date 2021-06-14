@@ -16,6 +16,7 @@
             <th>Function</th>
             <th>Edit</th>
             <th>Delete</th>
+            <th>Analyze</th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@
             <td th:text="${function.toString()}"></td>
             <td><a th:href="@{/edit/{id}(id=${function.id})}">Edit</a></td>
             <td><a th:href="@{/delete/{id}(id=${function.id})}">Delete</a></td>
+            <td><a th:href="@{/analyze/{id}(id=${function.id})}">Analyze</a></td>
           </tr>
         </tbody>
       </table>
