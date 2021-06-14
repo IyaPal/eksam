@@ -52,11 +52,20 @@
         </td>
     </tr>
 </table>
-
-<br>
-<p><strong>x:</strong> <span th:text="${function.x()}"></span></p>
+<div th:if="${function.sigma() > 0}">
+    <p> Since <strong>δ > 0</strong> curves are <strong>elliptical</strong> and there is 1 central point, what can be found <strong>O(x,y)</strong> </p>
+    <p><strong>x:</strong> <span th:text="${function.x()}"></span></p>
 <p><strong>y:</strong> <span th:text="${function.y()}"></span></p>
-<br>
+</div>
+<div th:if="${function.sigma() < 0}">
+    <p> Since <strong>δ < 0</strong> curves are <strong>hyporbollic</strong> and there is 1 central point, what can be found <strong>O(x,y)</strong> </p>
+    <p><strong>x:</strong> <span th:text="${function.x()}"></span></p>
+<p><strong>y:</strong> <span th:text="${function.y()}"></span></p>
+</div>
+<div th:if="${function.sigma() == 0}">
+    <p> Since <strong>δ = 0</strong> curves are <strong>parabollic</strong> and there is more than 1 central point or none, what cannot be found </p>
+
+</div>
 <div th:if="${function.delta() != 0}">
     <div th:if="${function.sigma() > 0}">
         <p> Since <strong>∆ ≠ 0</strong> and <strong>δ > 0</strong> need to find <strong>s</strong> </p>
@@ -78,9 +87,6 @@
         <div th:if="${function.K() > 0}"> Since <strong>K > 0</strong> curve is <strong>Imaginary parallel straight lines</strong></div>
         <div th:if="${function.K() == 0}"> Since <strong>K = 0</strong> curve is <strong>Coincidential straight lies</strong> </div>
     </div>
-</div>
-
-
 
 
 
