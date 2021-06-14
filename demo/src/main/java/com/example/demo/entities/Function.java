@@ -86,7 +86,7 @@ public class Function {
         return c1 * c3 - (c2 * c2) / 4.0;
     }
     public double delta() {
-        return (c1 * c3 * c6) + (c2 * c5 * c4)/2.0 + (c4 * c5 * c2)/2.0 -
+        return (c1 * c3 * c6) + (c2 * c5 * c4)/8.0 + (c4 * c5 * c2)/8.0 -
                 ((c4/2.0) * (c4/2.0) * c3) - ((c5/2.0) * (c5/2.0) * c1) - (c6 * (c2/2.0) * (c2/2.0));
     }
 
