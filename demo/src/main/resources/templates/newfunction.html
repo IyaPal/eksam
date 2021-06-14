@@ -14,20 +14,24 @@
     <span th:if="${#fields.hasErrors('c1')}" th:errors="*{c1}"></span><br/>
 
     <input th:field="*{c2}" type="text" name="c2" id="c2">
-    <label for="c2">y^2</label>
+    <label for="c2">xy</label>
     <span th:if="${#fields.hasErrors('c2')}" th:errors="*{c2}"></span><br/>
 
     <input th:field="*{c3}" type="text" name="c3" id="c3">
-    <label for="c3">x</label>
+    <label for="c3">y^2</label>
     <span th:if="${#fields.hasErrors('c3')}" th:errors="*{c3}"></span><br/>
 
     <input th:field="*{c4}" type="text" name="c4" id="c4">
-    <label for="c4">y</label>
+    <label for="c4">x</label>
     <span th:if="${#fields.hasErrors('c4')}" th:errors="*{c4}"></span><br/>
 
     <input th:field="*{c5}" type="text" name="c5" id="c5">
-    <label for="c5"></label>
+    <label for="c5">y</label>
     <span th:if="${#fields.hasErrors('c5')}" th:errors="*{c5}"></span><br/>
+
+    <input th:field="*{c6}" type="text" name="c6" id="c6">
+    <label for="c6"></label>
+    <span th:if="${#fields.hasErrors('c6')}" th:errors="*{c6}"></span><br/>
 
     <button type="submit">Add New Function</button>
   </form>

@@ -13,17 +13,18 @@ public class Function {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private int c1, c2, c3, c4, c5;
+    private int c1, c2, c3, c4, c5, c6;
 
     public Function() {
     }
 
-    public Function(int c1, int c2, int c3, int c4, int c5) {
+    public Function(int c1, int c2, int c3, int c4, int c5, int c6) {
         this.c1 = c1;
         this.c2 = c2;
         this.c3 = c3;
         this.c4 = c4;
         this.c5 = c5;
+        this.c6 = c6;
     }
 
     public long getId() {
@@ -74,15 +75,24 @@ public class Function {
         this.c5 = c5;
     }
 
+    public int getC6() {
+        return c6;
+    }
+
+    public void setC6(int c6) {
+        this.c6 = c6;
+    }
+
     @Override
     public String toString() {
         String s = "";
         ArrayList<String> polynoms = new ArrayList<>();
         if (c1 != 0) polynoms.add(c1 + "x^2");
-        if (c2 != 0) polynoms.add(c2 + "y^2");
-        if (c3 != 0) polynoms.add(c3 + "x");
-        if (c4 != 0) polynoms.add(c4 + "y");
-        if (c5 != 0) polynoms.add(c5 + "");
+        if (c2 != 0) polynoms.add(c2 + "xy");
+        if (c3 != 0) polynoms.add(c3 + "y^2");
+        if (c4 != 0) polynoms.add(c4 + "x");
+        if (c5 != 0) polynoms.add(c5 + "y");
+        if (c6 != 0) polynoms.add(c6 + "");
         s = String.join(" + ", polynoms);
         return s;
 
