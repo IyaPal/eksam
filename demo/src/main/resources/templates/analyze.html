@@ -54,26 +54,29 @@
 </table>
 
 <br>
-<p><strong>K:</strong> <span th:text="${function.K()}"></span></p>
-<p><strong>s:</strong> <span th:text="${function.s()}"></span></p>
 <p><strong>x:</strong> <span th:text="${function.x()}"></span></p>
 <p><strong>y:</strong> <span th:text="${function.y()}"></span></p>
 <br>
 <div th:if="${function.delta() != 0}">
     <div th:if="${function.sigma() > 0}">
-        <div th:if="${function.s() < 0}"> Real ellipse</div>
-        <div th:if="${function.s() > 0}"> Imaginary ellipse</div>
+        <p> Since <strong>∆ ≠ 0</strong> and <strong>δ > 0</strong> need to find <strong>s</strong> </p>
+        <p><strong>s:</strong> <span th:text="${function.s()}"></span></p>
+        <div th:if="${function.s()*function.delta() < 0}"> Since <strong>∆ * s < 0</strong> curve is <strong>Real ellipse</strong></div>
+        <div th:if="${function.s()*function.delta() > 0}"> Since <strong>∆ * s > 0</strong> curve is <strong>Imaginary ellipse</strong></div>
+        <span th:text="${function.s()*function.delta()}"></span>
     </div>
-    <div th:if="${function.sigma() < 0}"> Hyperbole</div>
-    <div th:if="${function.sigma() == 0}"> Parabole </div>
+    <div th:if="${function.sigma() < 0}"> Since <strong>∆ ≠ 0</strong> and <strong>δ < 0</strong> curve is <strong>Hyperbole</strong></div>
+    <div th:if="${function.sigma() == 0}"> Since <strong>∆ ≠ 0</strong> and <strong>δ = 0</strong> curve is <strong>Parabole</strong></div>
 </div>
 <div th:if="${function.delta() == 0}">
-    <div th:if="${function.sigma() > 0}"> Imaginary intersecting straight lines</div>
-    <div th:if="${function.sigma() < 0}"> Intersecting straight lines</div>
+    <div th:if="${function.sigma() > 0}"> Since <strong>∆ = 0</strong> and <strong>δ > 0</strong> curve is <strong>Imaginary intersecting straight lines</strong></div>
+    <div th:if="${function.sigma() < 0}"> Since <strong>∆ = 0</strong> and <strong>δ < 0</strong> curve is <strong>Intersecting straight lines</strong></div>
     <div th:if="${function.sigma() == 0}">
-        <div th:if="${function.K() < 0}"> Parallel straight lines</div>
-        <div th:if="${function.K() > 0}"> Imaginary parallel straight lines</div>
-        <div th:if="${function.K() == 0}"> Coincidential straight lies </div>
+        <p> Since <strong>∆ = 0</strong> and <strong>δ = 0</strong> need to find <strong>K</strong> </p>
+        <p><strong>K:</strong> <span th:text="${function.K()}"></span></p>
+        <div th:if="${function.K() < 0}"> Since <strong>K < 0</strong> curve is <strong>Parallel straight lines</strong></div>
+        <div th:if="${function.K() > 0}"> Since <strong>K > 0</strong> curve is <strong>Imaginary parallel straight lines</strong></div>
+        <div th:if="${function.K() == 0}"> Since <strong>K = 0</strong> curve is <strong>Coincidential straight lies</strong> </div>
     </div>
 </div>
 
