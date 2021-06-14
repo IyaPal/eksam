@@ -8,45 +8,76 @@
 <h1>Analyze</h1>
 <div th:text="${function.toString()}"></div>
 <p>c1 x^2 + c2/2 xy + c3 y^2 + c4/2 x + c5/2 y + c6 = 0</p>
-<p>δ = </p>
-<p>|c1   c2/2|</p>
-<p>|c2/2   c3|</p>
-<p>=</p>
-<div th:text="|*{function.c1}   *{function.c2}/2|"></div>
-<div th:text="|*{function.c2}/2   *{function.c3}|"></div>
-<div>δ = </div>
-<div th:text="${function.sigma()}"></div>
-
-<p>Δ = </p>
-<p>|c1   c2/2  c4/2|</p>
-<p>|c2/2   c3  c5/2|</p>
-<p>|c4/2   c5/2  c6|</p>
-<p>=</p>
-<div th:text="|*{function.c1}   *{function.c2}/2   *{function.c4}/2|"></div>
-<div th:text="|*{function.c2}/2   *{function.c3}   *{function.c5}/2|"></div>
-<div th:text="|*{function.c4}/2   *{function.c5}/2   *{function.c6}|"></div>
-<div>Δ = </div>
-<div th:text="${function.delta()}"></div>
+<table>
+    <tr>
+        <td>δ = </td>
+        <td>
+            <div>
+                <p>|c1   c2/2|</p>
+                <p>|c2/2   c3|</p>
+            </div>
+        </td>
+        <td> = </td>
+        <td>
+            <div style="width: 150px">
+                |<span th:text="|*{function.c1}   *{function.c2/2.0}|"></span>| <br>
+                |<span th:text="|*{function.c2/2.0}   *{function.c3}|"></span>|
+            </div>
+        </td>
+        <td> = </td>
+        <td>
+            <div th:text="${function.sigma()}"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>Δ = </td>
+        <td>
+            <div>
+                <p>|c1   c2/2  c4/2|</p>
+                <p>|c2/2   c3  c5/2|</p>
+                <p>|c4/2   c5/2  c6|</p>
+            </div>
+        </td>
+        <td> = </td>
+        <td>
+            <div style="width: 150px">
+                |<span th:text="|*{function.c1}   *{function.c2/2.0}   *{function.c4/2.0}|"></span>| <br>
+                |<span th:text="|*{function.c2/2.0}   *{function.c3}   *{function.c5/2.0}|"></span>| <br>
+                |<span th:text="|*{function.c4/2.0}   *{function.c5/2.0}   *{function.c6}|"></span>|
+            </div>
+        </td>
+        <td> = </td>
+        <td>
+            <div th:text="${function.delta()}"></div>
+        </td>
+    </tr>
+</table>
 
 <br>
-<div th:if="${function.sigma() == 0}">
-  <p>δ = 0 parabolic curve</p>
+<p><strong>K:</strong> <span th:text="${function.K()}"></span></p>
+<p><strong>s:</strong> <span th:text="${function.s()}"></span></p>
+<p><strong>x:</strong> <span th:text="${function.x()}"></span></p>
+<p><strong>y:</strong> <span th:text="${function.y()}"></span></p>
+<br>
+<div th:if="${function.delta() != 0}">
+    <div th:if="${function.sigma() > 0}">
+        <div th:if="${function.s() < 0}"> Real ellipse</div>
+        <div th:if="${function.s() > 0}"> Imaginary ellipse</div>
+    </div>
+    <div th:if="${function.sigma() < 0}"> Hyperbole</div>
+    <div th:if="${function.sigma() == 0}"> Parabole </div>
 </div>
-<div th:if="${function.sigma() > 0}">
-  <p>δ > 0 hyperbolic curve</p>
-</div>
-<div th:if="${function.sigma() < 0}">
-    <p>δ < 0 same elliptic curve</p>
+<div th:if="${function.delta() == 0}">
+    <div th:if="${function.sigma() > 0}"> Imaginary intersecting straight lines</div>
+    <div th:if="${function.sigma() < 0}"> Intersecting straight lines</div>
+    <div th:if="${function.sigma() == 0}">
+        <div th:if="${function.K() < 0}"> Parallel straight lines</div>
+        <div th:if="${function.K() > 0}"> Imaginary parallel straight lines</div>
+        <div th:if="${function.K() == 0}"> Coincidential straight lies </div>
+    </div>
 </div>
 
-<div>K = </div>
-<div th:text="${function.K()}"></div>
-<div>s = </div>
-<div th:text="${function.s()}"></div>
-<div>x = </div>
-<div th:text="${function.x()}"></div>
-<div>y = </div>
-<div th:text="${function.y()}"></div>
+
 
 
 
